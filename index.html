@@ -6,8 +6,87 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather app</title>
     <link href="style.css" rel="stylesheet" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Felipa&family=Ubuntu:ital,wght@0,400;1,300&display=swap" rel="stylesheet">
   </head>
   <body>
-    <p class="text">Hello!</p>
+        <div class="content">
+        <div class="container defaultPlace">
+
+<!-- Search engine -->
+          <div class="row">
+          <div class="search">
+   <form id="search-form">  
+     <input
+          type="submit"
+          value="🔎"
+         class="form-control btn btn-primary shadow-sm col-9"
+       id="button"/>       
+  <input type="search" 
+id="site-search" 
+class="siteSearch col-9"
+autofocus="on" 
+placeholder="Search" 
+autocomplete="off">
+</form>  
+        </div>
+<button id="currentLocation" class="form-control btn btn-primary shadow-sm col-3">
+  Current Location
+</button>
+      </div>
+<!-- Search engine -->
+
+            <div class="row">
+      <div class="Skogsby col-4">
+                
+        <h1 id="city">Skogsby</h1>
+        <div id="current-date">Wednesday</br>
+        May 4, 11:09</br></div>
+        <span class="temp"><span id="valueTemp">+8  </span><a href="#" id="link-celsius">℃</a> |
+                <a href="#" id="link-fahrenheit">℉</a></span>
+      </div>
+      
+      <p class="emoji col-4">
+          <span class="sun">☀️</span></br><span class="sunny">Sunny</span>
+      </p>
+      <p class="specifics col-4">
+          Humidity 40%</br>
+          Precipitation 0%</br>
+          Sunrise 6:20</br>
+          Sunset 20:32</br>
+          Wind 12m/s
+      </p>
+      </div>
+      </div>
+     
+          
+      <div class="container days">
+          <div class="row">
+          
+          <div class="col-sm">Thursday </br>⛅️ </br>14° <span class=nightTemp> 1°</span></div>
+          <div class="col-sm">Friday </br>☁️</br> 16° <span class=nightTemp>6°</span></div>
+          <div class="col-sm">Saturday </br>⛅️ </br>18° <span class=nightTemp>4°</span></div>
+          <div class="col-sm">Sunday</br> 🌧</br>16° <span class=nightTemp>4°</span></div>
+          <div class="col-sm">Monday </br>🌤 </br>15° <span class=nightTemp>2°</span></div>
+          <div class="col-sm">Tuesday</br>🌤 </br>15° <span class=nightTemp>2°</span></div>
+         
+          </div>
+      </div>
+    
+      </div>
+    <small>
+      <a href="https://github.com/laimac/vanilla-weather-app" target="_blank"
+        >Open-source code</a
+      >
+      by Laima Ciselonoka
+    </small>
   </body>
 </html>
