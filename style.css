@@ -1,4 +1,103 @@
-.text{
-    display:block;
+.content {
+    background: url(media/sky.jpg) no-repeat center center;
+    background-size: contain;
+    display: block;
+    padding: 80px 80px 60px;
+    max-width: 800px;
+    margin: 0 auto;
+    font-family: 'Ubuntu',
+        sans-serif;
+}
+
+.Skogsby,
+.emoji,
+.specifics {
     text-align: center;
+    padding-bottom: 60px;
+}
+
+#link-celsius,
+#link-fahrenheit {
+    font-size: 28px;
+    color: rgb(76, 74, 74);
+    text-decoration: none;
+}
+
+.Skogsby {
+    font-size: 20px;
+    padding-top: 40px;
+}
+
+.specifics {
+    font-size: 15px;
+    padding-top: 50px;
+}
+
+.sun {
+    font-size: 80px;
+    display: block;
+    margin: 0 auto;
+}
+
+.emoji {
+    line-height: 220%;
+    padding-top: 70px;
+    display: block;
+    margin: 0 auto;
+
+}
+
+.sunny {
+    font-style: italic;
+}
+
+.temp {
+    font-size: 30px;
+}
+
+.nightTemp {
+    color: rgb(103, 103, 103);
+    padding-left: 5px;
+}
+
+.days {
+    text-align: center;
+    display: block;
+    line-height: 40px;
+    font-size: 18px;
+    background: rgb(147, 165, 205, 0.3)
+}
+
+#button {
+    border: none;
+    opacity: 0.7;
+    background: none;
+    width: 20%;
+}
+
+#button:hover {
+    font-weight: 900;
+    background: none;
+    opacity: 1;
+    border: none;
+}
+
+#site-search {
+    border: none;
+    border-radius: 6px;
+    font-size: 18px;
+    margin-top: 4px;
+}
+
+#currentLocation {
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    background-color: #3f88d5;
+    transform: scale(0.75);
+}
+
+#currentLocation:hover {
+    transition: 150 ease-in-out;
+    background-color: #1068c6;
 }
