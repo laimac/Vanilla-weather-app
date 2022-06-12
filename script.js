@@ -15,6 +15,27 @@ if(minutes < 10) {
 }
 currentDate.innerHTML=`${day} ${hours}:${minutes}`;
 
+function displayData(response) {
+  let cityName = response.data.name;
+  let cityElement = document.querySelector("#city");
+  cityElement.innerHTML = cityName; 
+
+    let temperatureElement=document.querySelector("#valueTemp");
+    let humidityElement=document.querySelector("#humidity");
+    let windElement=document.querySelector("#wind");
+    let pressureElement=document.querySelector("#pressure");
+    let descriptionElement=document.querySelector("#description");
+  
+
+temperatureElement.innerHTML=Math.round(response.data.main.temp);
+humidityElement.innerHTML=response.data.main.humidity;
+pressureElement.innerHTML=response.data.main.pressure;
+console.log(response.data);
+windElement.innerHTML=Math.round(response.data.wind.speed);
+
+descriptionElement.innerHTML=response.data.weather[0].description;
+};
+
 function searchEngine(city) {
  let apiKey = `8740228fba90a854cea90d4f0155d9e9`;
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
@@ -29,6 +50,8 @@ searchEngine(city);
 
 let searchForm=document.querySelector("#search-form")
 searchForm.addEventListener("submit", search)
+
+search ("Kalmar");
 
 // // CONVERSION
 // function convertToC(event) {
@@ -57,24 +80,18 @@ searchForm.addEventListener("submit", search)
 // } 
 // console.log(showPosition);
 
-function displayData(response) {
-  let cityName = response.data.name;
-  let cityElement = document.querySelector("#city");
-  cityElement.innerHTML = cityName; 
 
-    let temperatureElement=document.querySelector("#valueTemp");
-    let humidityElement=document.querySelector("#humidity");
-    let windElement=document.querySelector("#wind");
-    let pressureElement=document.querySelector("#pressure");
-    let descriptionElement=document.querySelector("description");
 
-temperatureElement.innerHTML=Math.round(response.data.main.temp);
-humidityElement.innerHTML=response.data.main.humidity;
-pressureElement.innerHTML=response.data.main.pressure;
-console.log(response.data);
-windElement.innerHTML=Math.round(response.data.wind.speed);
-descriptionElement.innerHTML=response.data.weather[0].description;
-};
+
+// let sunriseElement=document.querySelector("#sunrise");
+// let sunsetElement=document.querySelector("#sunset");
+// sunriseElement.innerHTML=(response.data.sys.sunrise)*1000;
+// sunsetElement.innerHTML=(response.data.sys.sunset)*1000;
+// let sunriseHours = new Time(milliseconds);
+// let sunsetHours = new Time(milliseconds);
+// let formatSunrise=sunriseHours.toLocaleString("en-US");
+// let formatSunset=sunsetHours.toLocaleString("en-US");
+// console.log(formatSunset);
 
 function showCurrentLocation(){
   navigator.geolocation.getCurrentPosition(showPosition);
