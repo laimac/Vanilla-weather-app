@@ -26,6 +26,29 @@ function displayData(response) {
     let pressureElement=document.querySelector("#pressure");
     let descriptionElement=document.querySelector("#description");
     let iconElement=document.querySelector("#icon");
+    let sunriseDate=new Date((response.data.sys.sunrise)*1000);
+    let sunsetDate=new Date((response.data.sys.sunset)*1000);
+  let sunriseHours=sunriseDate.getHours();
+  if(sunriseHours < 10) {
+  sunriseHours = `0${sunriseHours}`;
+}
+  let sunriseMinutes=sunriseDate.getMinutes();
+if(sunriseMinutes < 10) {
+  sunriseMinutes = `0${sunriseMinutes}`;
+}
+   let sunsetHours=sunsetDate.getHours();
+   if(sunsetHours < 10) {
+  sunsetHours = `0${sunsetHours}`;
+}
+  let sunsetMinutes=sunsetDate.getMinutes();
+if(sunsetMinutes < 10) {
+  sunsetMinutes = `0${sunsetMinutes}`;
+}
+
+let sunriseElement=document.querySelector("#sunrise");
+let sunsetElement=document.querySelector("#sunset");
+sunriseElement.innerHTML=`${sunriseHours}:${sunriseMinutes}`;
+sunsetElement.innerHTML=`${sunsetHours}:${sunsetMinutes}`;
 
 celsiusTemperature=response.data.main.temp;
 
@@ -87,20 +110,6 @@ function showPosition(position) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
 axios.get(apiUrl).then(displayData);
 } 
-console.log(showPosition);
-
-
-
-
-// let sunriseElement=document.querySelector("#sunrise");
-// let sunsetElement=document.querySelector("#sunset");
-// sunriseElement.innerHTML=(response.data.sys.sunrise)*1000;
-// sunsetElement.innerHTML=(response.data.sys.sunset)*1000;
-// let sunriseHours = new Time(milliseconds);
-// let sunsetHours = new Time(milliseconds);
-// let formatSunrise=sunriseHours.toLocaleString("en-US");
-// let formatSunset=sunsetHours.toLocaleString("en-US");
-// console.log(formatSunset);
 
 function showCurrentLocation(){
   navigator.geolocation.getCurrentPosition(showPosition);
