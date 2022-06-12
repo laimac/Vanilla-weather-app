@@ -15,6 +15,13 @@
     padding-bottom: 60px;
 }
 
+#description{
+    display: block;
+}
+#description:first-letter{
+    text-transform: uppercase;
+}
+
 #link-celsius,
 #link-fahrenheit {
     font-size: 28px;
@@ -44,10 +51,6 @@
     display: block;
     margin: 0 auto;
 
-}
-
-.sunny {
-    font-style: italic;
 }
 
 .temp {
