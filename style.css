@@ -22,11 +22,21 @@
     text-transform: uppercase;
 }
 
-#link-celsius,
-#link-fahrenheit {
-    font-size: 28px;
+.units{
     color: rgb(76, 74, 74);
+    position: relative;
+    font-size: 16px;
+    top: -8px;
+}
+.active{
+    color: rgb(76, 74, 74);
+
+}
+
+#link-celsius, #link-fahrenheit {
     text-decoration: none;
+    cursor:pointer;
+    text-decoration-line: none;
 }
 
 .Skogsby {
