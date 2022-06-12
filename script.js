@@ -25,15 +25,17 @@ function displayData(response) {
     let windElement=document.querySelector("#wind");
     let pressureElement=document.querySelector("#pressure");
     let descriptionElement=document.querySelector("#description");
-  
+    let iconElement=document.querySelector("#icon");
+
+celsiusTemperature=response.data.main.temp;
 
 temperatureElement.innerHTML=Math.round(response.data.main.temp);
 humidityElement.innerHTML=response.data.main.humidity;
 pressureElement.innerHTML=response.data.main.pressure;
 console.log(response.data);
 windElement.innerHTML=Math.round(response.data.wind.speed);
-
 descriptionElement.innerHTML=response.data.weather[0].description;
+iconElement.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`)
 };
 
 function searchEngine(city) {
@@ -41,6 +43,29 @@ function searchEngine(city) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayData);
 } 
+
+
+function displayFahrenheit(event){
+    event.preventDefault();
+    let fahreinheitElement=document.querySelector("#valueTemp");
+    let fahreinheitTemperature=Math.round(celsiusTemperature*9)/5+32;
+    fahreinheitElement.innerHTML=Math.round(fahreinheitTemperature);
+}
+
+function displayCelsius(event){
+    event.preventDefault();
+        let temperatureElement=document.querySelector("#valueTemp");
+        temperatureElement.innerHTML=Math.round(celsiusTemperature);
+
+}
+
+let celsiusTemperature=null;
+
+let fahreinheitLink=document.querySelector("#link-fahrenheit");
+fahreinheitLink.addEventListener("click", displayFahrenheit);
+
+let celsiusLink=document.querySelector("#link-celsius");
+celsiusLink.addEventListener("click", displayCelsius);
 
 function search(event){
     event.preventDefault();
@@ -50,26 +75,6 @@ searchEngine(city);
 
 let searchForm=document.querySelector("#search-form")
 searchForm.addEventListener("submit", search)
-
-search ("Kalmar");
-
-// // CONVERSION
-// function convertToC(event) {
-//   event.preventDefault();
-//   let celsius = document.querySelector("#valueTemp");
-//   celsius.innerHTML =  +8;
-// }
-// let temperatureC = document.querySelector("#link-celsius");
-// temperatureC.addEventListener("click", convertToC);
-
-// function convertToF(event) {
-//   event.preventDefault();
-//   let fahrenheit = document.querySelector("#valueTemp");
-//   fahrenheit.innerHTML =  Math.round((9*8+160)/5);
-// }
-// let temperatureF = document.querySelector("#link-fahrenheit");
-// temperatureF.addEventListener("click", convertToF);
-// // CONVERSION
 
 // function showPosition(position) {
 //    let apiKey = `8740228fba90a854cea90d4f0155d9e9`;
@@ -99,3 +104,4 @@ function showCurrentLocation(){
 
  let currentLocation = document.querySelector("#currentLocation");
 currentLocation.addEventListener("click", showCurrentLocation);
+
