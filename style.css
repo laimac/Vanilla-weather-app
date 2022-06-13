@@ -9,7 +9,6 @@
 }
 
 .Skogsby,
-.emoji,
 .specifics {
     text-align: center;
     padding-bottom: 60px;
@@ -47,6 +46,8 @@
 .specifics {
     font-size: 15px;
     padding-top: 50px;
+    text-align: center;
+
 }
 
 .sun {
@@ -56,30 +57,27 @@
 }
 
 .emoji {
-    line-height: 220%;
-    padding-top: 70px;
-    display: block;
-    margin: 0 auto;
-
+text-align: center;
+padding-top: 40px;
+padding-left: 50px;
 }
 
 .temp {
     font-size: 30px;
 }
 
-.nightTemp {
-    color: rgb(103, 103, 103);
-    padding-left: 5px;
+.forecast{
+text-align: center;
+font-size: 20px;
 }
 
-.days {
-    text-align: center;
-    display: block;
-    line-height: 40px;
-    font-size: 18px;
-    background: rgb(147, 165, 205, 0.3)
+.weather-forecast-temperatures{
+font-size: 17px;
 }
 
+.nightTemp{
+    opacity:0.7;
+}
 #button {
     border: none;
     opacity: 0.7;
