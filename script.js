@@ -15,6 +15,40 @@ if(minutes < 10) {
 }
 currentDate.innerHTML=`${day} ${hours}:${minutes}`;
 
+function displayForecast(response){
+    console.log(response);
+    let forecastElement=document.querySelector("#weather-forecast");
+
+    let forecastHTML=`<div class="row">`;
+    let days=["Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+    days.forEach(function(day){
+        forecastHTML= forecastHTML+
+            ` <div class="col-2">
+                <div class="weather-forecast-date">${day}</div>
+                <img
+                  src="http://openweathermap.org/img/wn/50d@2x.png"
+                  alt=""
+                  width="42"
+                />
+                <div class="weather-forecast-temperatures">
+                  <span class="dayTemp"> 18° </span>
+                  <span class="nightTemp"> 12° </span>
+                </div>
+            </div>`;  
+    });
+    
+forecastHTML=forecastHTML+`</div>`;  
+forecastElement.innerHTML=forecastHTML;
+}
+displayForecast();
+
+function getForecast(coordinates){
+    let apiKey=`8740228fba90a854cea90d4f0155d9e9`;
+    let apiUrl=`https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(displayForecast);
+}
+
+
 function displayData(response) {
   let cityName = response.data.name;
   let cityElement = document.querySelector("#city");
@@ -60,7 +94,11 @@ windElement.innerHTML=Math.round(response.data.wind.speed);
 descriptionElement.innerHTML=response.data.weather[0].description;
 iconElement.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
 iconElement.setAttribute("alt", response.data.weather[0].main);
+
+getForecast(response.data.coord);
 };
+
+
 
 function searchEngine(city) {
  let apiKey = `8740228fba90a854cea90d4f0155d9e9`;
@@ -86,31 +124,8 @@ function displayCelsius(event){
         temperatureElement.innerHTML=Math.round(celsiusTemperature);
 }
 
-function displayForecast(){
-    let forecastElement=document.querySelector("#weather-forecast");
 
-    let forecastHTML=`<div class="row">`;
-    let days=["Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
-    days.forEach(function(day){
-        forecastHTML= forecastHTML+
-            ` <div class="col-2">
-                <div class="weather-forecast-date">${day}</div>
-                <img
-                  src="http://openweathermap.org/img/wn/50d@2x.png"
-                  alt=""
-                  width="42"
-                />
-                <div class="weather-forecast-temperatures">
-                  <span class="dayTemp"> 18° </span>
-                  <span class="nightTemp"> 12° </span>
-                </div>
-            </div>`;  
-    });
-    
-forecastHTML=forecastHTML+`</div>`;  
-forecastElement.innerHTML=forecastHTML;
-}
-displayForecast();
+
 
 let celsiusTemperature=null;
 
