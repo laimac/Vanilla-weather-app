@@ -15,33 +15,39 @@ if(minutes < 10) {
 }
 currentDate.innerHTML=`${day} ${hours}:${minutes}`;
 
+function formatDay(timestamp){
+let date=new Date(timestamp*1000);
+let day =date.getDay();
+let days=["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+return days[day];
+}
+
 function displayForecast(response){
-    console.log(response);
+    let forecast=response.data.daily;
     let forecastElement=document.querySelector("#weather-forecast");
 
     let forecastHTML=`<div class="row">`;
-    let days=["Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
-    days.forEach(function(day){
+
+    forecast.forEach(function(forecastDay, index){
+if (index > 0 && index < 7){
         forecastHTML= forecastHTML+
             ` <div class="col-2">
-                <div class="weather-forecast-date">${day}</div>
+                <div class="weather-forecast-date">${formatDay(forecastDay.dt)}</div>
                 <img
-                  src="http://openweathermap.org/img/wn/50d@2x.png"
+                  src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png"
                   alt=""
                   width="42"
                 />
                 <div class="weather-forecast-temperatures">
-                  <span class="dayTemp"> 18° </span>
-                  <span class="nightTemp"> 12° </span>
+                  <span class="dayTemp"> ${Math.round(forecastDay.temp.max)}° </span>
+                  <span class="nightTemp"> ${Math.round(forecastDay.temp.min)}° </span>
                 </div>
             </div>`;  
-    });
+    }});
     
 forecastHTML=forecastHTML+`</div>`;  
 forecastElement.innerHTML=forecastHTML;
 }
-displayForecast();
-
 function getForecast(coordinates){
     let apiKey=`8740228fba90a854cea90d4f0155d9e9`;
     let apiUrl=`https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
@@ -159,3 +165,4 @@ function showCurrentLocation(){
  let currentLocation = document.querySelector("#currentLocation");
 currentLocation.addEventListener("click", showCurrentLocation);
 
+searchEngine("Kalmar");
