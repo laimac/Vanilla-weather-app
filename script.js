@@ -95,7 +95,6 @@ celsiusTemperature=response.data.main.temp;
 temperatureElement.innerHTML=Math.round(response.data.main.temp);
 humidityElement.innerHTML=response.data.main.humidity;
 pressureElement.innerHTML=response.data.main.pressure;
-console.log(response.data);
 windElement.innerHTML=Math.round(response.data.wind.speed);
 descriptionElement.innerHTML=response.data.weather[0].description;
 iconElement.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
@@ -164,5 +163,7 @@ function showCurrentLocation(){
 
  let currentLocation = document.querySelector("#currentLocation");
 currentLocation.addEventListener("click", showCurrentLocation);
+
+
 
 searchEngine("Kalmar");
